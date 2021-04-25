@@ -13,7 +13,7 @@ module.exports = {
 function findById(user_id) {
     return db('users')
         .select('user_id', 'username', 'password', 'user_type')
-        .where('users.id', id)
+        .where('users.id', user_id)
         .first()
 }
 
