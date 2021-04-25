@@ -48,8 +48,7 @@ function findRenterEquipment(renter_id) {
 
 
 // finds equipment in database of a particular name
-function findEquipment(equipment_name) {
+function findEquipment() {
     return db('equipment')
     .select('equipment_name', 'equipment_description', 'owner_id', 'renter_id')
-    .where('equipment_name', equipment_name)
 }
