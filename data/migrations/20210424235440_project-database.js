@@ -8,6 +8,9 @@ exports.up = function(knex) {
             .notNullable()
         tbl.string('password', 128)
             .notNullable()
+        tbl.string('user_type')
+            .notNullable()
+            .default('renter')
     })
     .createTable('equipment', tbl => {
         tbl.increments('equipment_id')
