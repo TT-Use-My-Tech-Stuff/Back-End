@@ -6,7 +6,11 @@ module.exports = {
     add,
     findOwnerEquipment,
     findRenterEquipment,
-    findEquipment
+    findEquipment,
+    addEquipment,
+    updateEquipment,
+    deleteEquipment,
+    findEquipmentById
 };
 
 // finds user in database by user_id and pulls all columns from users table
@@ -31,6 +35,11 @@ async function add(user) {
     return findById(id)
 }
 
+// creates equipment in database
+function addEquipment(equipment) {
+    return db('equipment').insert(equipment)
+}
+
 // finds owner in database and pulls all owner equipment
 function findOwnerEquipment(owner_id) {
     return db('equipment')
@@ -50,5 +59,28 @@ function findRenterEquipment(renter_id) {
 // finds equipment in database of a particular name
 function findEquipment() {
     return db('equipment')
-    .select('equipment_name', 'equipment_description', 'owner_id', 'renter_id')
+        .select('equipment_name', 'equipment_description', 'owner_id', 'renter_id')
+}
+
+// finds one equipment in database based off of equipment_id
+function findEquipmentById(equipment_id) {
+    return db('equipment')
+        .select('equipment_name', 'equipment_description', 'owner_id', 'renter_id')
+        .where('equipment_id', equipment_id)
+        .first()
+}
+
+
+// updates equipment
+function updateEquipment(equipment_id, renter_id) {
+    return db('equipment')
+        .where('equipment_id', equipment_id)
+        .update(renter_id, 'renter_id')
+}
+
+// deletes equipment
+function deleteEquipment(equipment_id) {
+    return db('equipment')
+        .where('equipment_id', equipment_id)
+        .del()
 }

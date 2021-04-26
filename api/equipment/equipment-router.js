@@ -38,7 +38,62 @@ router.get('/owner/:id', mw.restrict, (req,res,next) => {
 })
 
 
-// edits an owned piece of equipment
-router.put('/edit', (req,res,next) => {
+// creates a new piece of equipment
+router.post('/createEquipment/:id', (req,res,next) => {
+    let equipment = req.body
+    equipment.owner_id = req.params.id
 
+
+    Users.addEquipment(equipment)
+        .then(equipment => {
+            res.status(201).json(equipment);
+        })
+        .catch(next)
+})
+
+// allows for rental of owned piece of equipment
+router.put('/rentEquipment/:id', (req,res,next) => {
+    let equipment_id = req.body.equipment_id
+    let currentRenter_id = req.body.renter_id
+    if(currentRenter_id != null){
+        res.status(422).json({message: `this equipment is already rented out`})
+    }else{
+        let newRenter_id = req.params.id
+    Users.updateEquipment(equipment_id, newRenter_id)
+        .then(count => {
+            if(count > 0){
+                res.status(201).json({message: `update successful`})
+            }else{
+                res.status(404).json(message.err)
+            }
+        })
+        .catch(next)
+    }
+})
+
+//returns equipment
+router.put('/returnEquipment/:id', (req,res,next) => {
+    let equipment_id = req.params.id
+    Users.updateEquipment(equipment_id, null)
+        .then(count => {
+            if(count > 0){
+                res.status(201).json({message: `equipment returned`})
+            }else{
+                res.status(404).json(message.err)
+            }
+        })
+        .catch(next)
+})
+
+// deletes equipment
+router.delete('/equipment/:id', (req,res,next) => {
+    Users.deleteEquipment(req.params.id)
+        .then(count => {
+            if (count > 0) {
+                res.status(201).json({message: `equipment deleted successfully`})
+            }else{
+                res.status(404).json({message: `the equipment with the specified ID could not be found`})
+            }
+        })
+        .catch(next)
 })
