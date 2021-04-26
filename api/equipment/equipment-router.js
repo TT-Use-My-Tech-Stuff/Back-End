@@ -29,27 +29,27 @@ router.get('/renter/:id', mw.restrict, (req,res,next) => {
 router.get('/owner/:id', mw.restrict, (req,res,next) => {
     Users.findOwnerEquipment(req.params.id)
         .then(equipment => {
-            res.status(200).json(`successfully created new equipment`)
+            res.status(200).json(equipment)
         })
         .catch(next)
 })
 
 
 // creates a new piece of equipment
-router.post('/createEquipment/:id', (req,res,next) => {
+router.post('/createEquipment/:id', mw.restrict, (req,res,next) => {
     let equipment = req.body
     equipment.owner_id = req.params.id
 
 
     Users.addEquipment(equipment)
         .then(equipment => {
-            res.status(201).json(equipment);
+            res.status(201).json('successfully created new equipment');
         })
         .catch(next)
 })
 
 // allows for rental of owned piece of equipment
-router.put('/rentEquipment/:id', (req,res,next) => {
+router.put('/rentEquipment/:id', mw.restrict, (req,res,next) => {
     let equipment_id = req.body.equipment_id
     let currentRenter_id = req.body.renter_id
     if(currentRenter_id != null){
@@ -69,7 +69,7 @@ router.put('/rentEquipment/:id', (req,res,next) => {
 })
 
 //returns equipment
-router.put('/returnEquipment/:id', (req,res,next) => {
+router.put('/returnEquipment/:id', mw.restrict, (req,res,next) => {
     let equipment_id = req.params.id
     Users.updateEquipment(equipment_id, null)
         .then(count => {
@@ -83,7 +83,7 @@ router.put('/returnEquipment/:id', (req,res,next) => {
 })
 
 // deletes equipment
-router.delete('/deleteEquipment/:id', (req,res,next) => {
+router.delete('/deleteEquipment/:id', mw.restrict, (req,res,next) => {
     Users.deleteEquipment(req.params.id)
         .then(count => {
             if (count > 0) {

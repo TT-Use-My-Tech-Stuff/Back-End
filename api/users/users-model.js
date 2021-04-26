@@ -17,7 +17,7 @@ module.exports = {
 function findById(user_id) {
     return db('users')
         .select('user_id', 'username', 'password', 'user_type')
-        .where('users.id', user_id)
+        .where('user_id', user_id)
         .first()
 }
 
@@ -25,7 +25,7 @@ function findById(user_id) {
 function findByUsername(username) {
     return db('users')
         .select('user_id', 'username', 'password', 'user_type')
-        .where('users.username', username)
+        .where('username', username)
         .first()
 }
 
@@ -59,7 +59,7 @@ function findRenterEquipment(renter_id) {
 // finds equipment in database of a particular name
 function findEquipment() {
     return db('equipment')
-        .select('equipment_name', 'equipment_description', 'owner_id', 'renter_id')
+        .select('equipment_id', 'equipment_name', 'equipment_description', 'owner_id', 'renter_id')
 }
 
 // finds one equipment in database based off of equipment_id
@@ -75,7 +75,7 @@ function findEquipmentById(equipment_id) {
 function updateEquipment(equipment_id, renter_id) {
     return db('equipment')
         .where('equipment_id', equipment_id)
-        .update(renter_id, 'renter_id')
+        .update('renter_id', renter_id)
 }
 
 // deletes equipment

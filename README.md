@@ -2,6 +2,7 @@
 
 Endpoint Documentation:
 
+
 axios.get("/")
 returns json object {api: "up"}
 
@@ -58,6 +59,7 @@ axios.delete("/api/equipment/deleteEquipment/:id")
 url id will be passed in as equipment id
 will delete said equipment
 returns "equipment deleted successfully"
+
 
 
 

@@ -12,7 +12,7 @@ server.use(cors());
 server.use(express.json());
 
 server.use('/api/users', usersRouter);
-server.use('api/equipment', equipmentRouter);
+server.use('/api/equipment', equipmentRouter);
 
 server.get('/', (req,res) => {
     res.json({ api: "up"});

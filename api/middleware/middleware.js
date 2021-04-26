@@ -2,13 +2,6 @@ const jwt = require('jsonwebtoken');
 const {jwtSecret} = require('../../config/secret.js');
 const Users = require('../users/users-model.js');
 
-module.exports = {
-    restrict,
-    checkCredentials,
-    checkUserType,
-    checkUserIsUnique,
-    checkUserExists
-}
 
 
 // checks if token is present and checks token secret against config secret.
@@ -83,4 +76,12 @@ const checkUserExists = (req,res,next) => {
         .catch(err => {
             res.status(500).json(err.message)
         })
+}
+
+module.exports = {
+    restrict,
+    checkCredentials,
+    checkUserType,
+    checkUserIsUnique,
+    checkUserExists
 }
