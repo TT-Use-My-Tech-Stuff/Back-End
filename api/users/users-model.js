@@ -43,7 +43,7 @@ function addEquipment(equipment) {
 // finds owner in database and pulls all owner equipment
 function findOwnerEquipment(owner_id) {
     return db('equipment')
-        .select('equipment_name', 'equipment_description', 'renter_id')
+        .select('equipment_id', 'equipment_name', 'equipment_description', 'renter_id', 'owner_id')
         .where('owner_id', owner_id)
 }
 
@@ -51,7 +51,7 @@ function findOwnerEquipment(owner_id) {
 // finds renter in database and pulls all rented equipment
 function findRenterEquipment(renter_id) {
     return db('equipment')
-        .select('equipment_name', 'equipment_description', 'owner_id')
+        .select('equipment_id', 'equipment_name', 'equipment_description', 'owner_id', 'renter_id')
         .where('renter_id', renter_id)
 }
 
