@@ -1,7 +1,4 @@
 const router = require('express').Router();
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const {jwtSecret} = require('../../config/secret.js');
 const Users = require('../users/users-model');
 const mw = require('../middleware/middleware.js');
 
@@ -9,7 +6,7 @@ module.exports = router
 
 
 // pulls all equipment
-router.get('/equipment', (req,res,next) => {
+router.get('/', (req,res,next) => {
     Users.findEquipment()
         .then(equipment => {
             res.status(200).json(equipment)
@@ -32,7 +29,7 @@ router.get('/renter/:id', mw.restrict, (req,res,next) => {
 router.get('/owner/:id', mw.restrict, (req,res,next) => {
     Users.findOwnerEquipment(req.params.id)
         .then(equipment => {
-            res.status(200).json(equipment)
+            res.status(200).json(`successfully created new equipment`)
         })
         .catch(next)
 })
@@ -86,7 +83,7 @@ router.put('/returnEquipment/:id', (req,res,next) => {
 })
 
 // deletes equipment
-router.delete('/equipment/:id', (req,res,next) => {
+router.delete('/deleteEquipment/:id', (req,res,next) => {
     Users.deleteEquipment(req.params.id)
         .then(count => {
             if (count > 0) {
