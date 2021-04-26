@@ -10,7 +10,8 @@ module.exports = {
     addEquipment,
     updateEquipment,
     deleteEquipment,
-    findEquipmentById
+    findEquipmentById,
+    updateEquipmentInfo
 };
 
 // finds user in database by user_id and pulls all columns from users table
@@ -65,18 +66,28 @@ function findEquipment() {
 // finds one equipment in database based off of equipment_id
 function findEquipmentById(equipment_id) {
     return db('equipment')
-        .select('equipment_name', 'equipment_description', 'owner_id', 'renter_id')
+        .select('equipment_id', 'equipment_name', 'equipment_description', 'owner_id', 'renter_id')
         .where('equipment_id', equipment_id)
         .first()
 }
 
 
-// updates equipment
+// updates equipment for renter
 function updateEquipment(equipment_id, renter_id) {
     return db('equipment')
         .where('equipment_id', equipment_id)
         .update('renter_id', renter_id)
 }
+
+
+// updates equipment
+function updateEquipmentInfo(equipment_id, changes) {
+    return db('equipment')
+        .where('equipment_id', equipment_id)
+        .update(changes, '*')
+}
+
+
 
 // deletes equipment
 function deleteEquipment(equipment_id) {
