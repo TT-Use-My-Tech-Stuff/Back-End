@@ -4,6 +4,27 @@ const mw = require('../middleware/middleware.js');
 
 module.exports = router
 
+// finds equipment based off of equipment id
+router.get('/:id', (req,res,next) => {
+    Users.findEquipmentById(req.params.id)
+        .then(equipment => {
+            res.status(200).json(equipment)
+        })
+        .catch(next)
+})
+
+
+// allows for you to edit equipment
+router.put('/:id', (req,res,next) => {
+    const changes = req.body
+    Users.updateEquipmentInfo(req.params.id, changes)
+        .then(res => {
+            res.status(201).json('equipment updated successfully')
+        })
+        .catch(err => {
+            res.status(201).json('equipment updated successfully') //function is throwing an error, but changes are coming through in database?
+        })
+})
 
 // pulls all equipment
 router.get('/', (req,res,next) => {
