@@ -8,17 +8,17 @@ Endpoint Documentation:
 
 
 axios.get("/") </br>
-returns json object {api: "up"}
+returns json object {api: "up"}</br>
 
 
 
-axios.post("/api/users/register")
-requires a user object = {
-    username: "must be unique",
-    password: "must be a string",
-    user_type: "must be renter, owner, or both. defaults to renter if not specified"
-}
-returns the newly created user
+axios.post("/api/users/register") </br>
+requires a user object = { </br>
+    username: "must be unique", </br>
+    password: "must be a string", </br>
+    user_type: "must be renter, owner, or both. defaults to renter if not specified" </br>
+}</br>
+returns the newly created user</br>
 
 
 
