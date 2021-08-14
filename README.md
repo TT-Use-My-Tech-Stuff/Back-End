@@ -97,13 +97,13 @@ ____________________________________________________________________
 // URL ID WILL BE RENTERS_ID</br>
 ENDPOINT: axios.put("https://back-end-tt.herokuapp.com/api/equipment/rentEquipment/:id")</br>
 
-    requires an equipment object = {</br>
-        equipment_id = "equipment id here",</br>
-        equipment_name = "equipment name here",</br>
-        equipment_description = "equipment description here",</br>
-        owner_id = "owner id here",</br>
-        renter_id = "renter id here"</br>
-    }</br>
+requires an equipment object = {</br>
+    equipment_id = "equipment id here",</br>
+    equipment_name = "equipment name here",</br>
+    equipment_description = "equipment description here",</br>
+    owner_id = "owner id here",</br>
+    renter_id = "renter id here"</br>
+}</br>
 
 WHAT IT RETURNS:
 if renter_id IS NOT null, put request will be rejected</br>
@@ -117,12 +117,12 @@ ____________________________________________________________________
 // URL ID WILL BE EQUIPMENT ID</br>
 ENDPOINT: axios.put("https://back-end-tt.herokuapp.com/api/equipment/returnEquipment/:id")</br>
 
-    requires an equipment object = {</br>
-        equipment_id = "equipment id here",</br>
-        equipment_name = "equipment name here",</br>
-        equipment_description = "equipment description here",</br>
-        owner_id = "owner id here",</br>
-        renter_id = "renter id here"</br>
-    }
+requires an equipment object = {</br>
+    equipment_id = "equipment id here",</br>
+    equipment_name = "equipment name here",</br>
+    equipment_description = "equipment description here",</br>
+    owner_id = "owner id here",</br>
+    renter_id = "renter id here"</br>
+}
 
 WHAT IT RETURNS: renter_id will be turned to null and will return string "equipment returned"</br>
