@@ -6,12 +6,15 @@ This is the backend code for our Use-My-Tech-Stuff student project.  Below is th
 BASE URL: https://back-end-tt.herokuapp.com/
 
 Endpoint Documentation:
-
+____________________________________________________________________
 
 ENDPOINT: axios.get("https://back-end-tt.herokuapp.com/") </br>
+
 WHAT IT RETURNS:  json object {api: "up"}</br>
 </br>
 </br>
+
+____________________________________________________________________
 
 ENDPOINT: axios.post("https://back-end-tt.herokuapp.com/api/users/register") </br>
 
@@ -25,6 +28,8 @@ WHAT IT RETURNS: the newly created user</br>
 </br>
 </br>
 
+____________________________________________________________________
+
 ENDPOINT: axios.post("https://back-end-tt.herokuapp.com/api/users/login")</br>
 
 requires a user object = {</br>
@@ -35,23 +40,31 @@ WHAT IT RETURNS: user and token.  You will want to save user_id to state.</br>
 </br>
 </br>
 
+____________________________________________________________________
+
 ENDPOINT: axios.get("https://back-end-tt.herokuapp.com/api/equipment/")</br>
 
 WHAT IT RETURNS: array filled with all equipment on site.</br>
 </br>
 </br>
 
-axios.get("https://back-end-tt.herokuapp.com/api/equipment/owner/:id")</br>
+____________________________________________________________________
+
+ENDPOINT: axios.get("https://back-end-tt.herokuapp.com/api/equipment/owner/:id")</br>
 
 WHAT IT RETURNS: all equipment attached to a specific owner's ID</br>
 </br>
 </br>
+
+____________________________________________________________________
 
 ENDPOINT: axios.get("https://back-end-tt.herokuapp.com/api/equipment/renter/:id")</br>
 
 WHAT IT RETURNS: all equipment attached to a specific renter's ID</br>
 </br>
 </br>
+
+____________________________________________________________________
 
 // URL ID WILL BE OWNERS_ID</br>
 ENDPOINT: axios.post("https://back-end-tt.herokuapp.com/api/equipment/createEquipment/:id")</br>
@@ -67,6 +80,8 @@ WHAT IT RETURNS: string: 'successfully created new equipment'</br>
 </br>
 </br>
 
+____________________________________________________________________
+
 //MAKE SURE URL ID IS EQUIPMENT ID, NOT USER ID</br>
 ENDPOINT: axios.delete("https://back-end-tt.herokuapp.com/api/equipment/deleteEquipment/:id")</br>
 
@@ -77,6 +92,7 @@ WHAT IT RETURNS: string: "equipment deleted successfully"</br>
 </br>
 </br>
 
+____________________________________________________________________
 
 // URL ID WILL BE RENTERS_ID</br>
 ENDPOINT: axios.put("https://back-end-tt.herokuapp.com/api/equipment/rentEquipment/:id")</br>
@@ -95,6 +111,8 @@ if renter_id IS null,  url id will be passed in as new renter's id</br>
 if update is successful, will return string "update successful"</br>
 </br>
 </br>
+
+____________________________________________________________________
 
 // URL ID WILL BE EQUIPMENT ID</br>
 ENDPOINT: axios.put("https://back-end-tt.herokuapp.com/api/equipment/returnEquipment/:id")</br>
