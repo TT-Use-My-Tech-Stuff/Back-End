@@ -6,6 +6,10 @@ This is the backend code for our Use-My-Tech-Stuff student project.  Below is th
 
 Endpoint Documentation:
 
+BASE URL: https://back-end-tt.herokuapp.com/
+
+
+
 
 axios.get("/") </br>
 returns json object {api: "up"}</br>
