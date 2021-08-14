@@ -25,7 +25,7 @@ const restrict = (req,res,next) => {
 // checks username and password presence
 const checkCredentials = (req,res,next) => {
     const {username, password} = req.body;
-    const valid = Boolean(username && password && typeof password === 'string');
+    const valid = Boolean(username && password);
 
     if(valid) {
         next()
